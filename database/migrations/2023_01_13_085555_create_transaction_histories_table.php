@@ -17,7 +17,7 @@ class CreateTransactionHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('wallet_id');
             $table->unsignedBigInteger('user_id');
-            $table->date('time');
+            $table->dateTime('time');
             $table->string('type');
             $table->string('transaction_type');
             $table->double('amount');

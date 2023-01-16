@@ -50,9 +50,11 @@ Route::get('logout', function ()
     return Redirect::to('/page-login');
 })->name('logout');
 
-Route::get('/page-trade', function () {
-    return view('trade');
-});
+//Route::get('/page-trade', function () {
+//    return view('trade');
+//});
+
+Route::get('/page-trade', [App\Http\Controllers\GetShareHolderController::class, 'getShareHolder']);
 
 Route::put('/trading', [App\Http\Controllers\TradeController::class, 'trading']);
 

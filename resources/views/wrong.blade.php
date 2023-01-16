@@ -30,33 +30,14 @@
     <!-- row -->
     <div class="container-fluid">
 
-        <form method="POST" action="{{ url('trading') }}">
-            @csrf
-            @method('PUT')
+        <h1>Opps...</h1>
+        <br>
+        <br>
+        <p>The transaction failed, please confirm that your operation is logical before proceeding!</p>
 
-            <label for="transaction_type">Current shareholder :</label>
-            <br>
-            <input class="form-control" readonly value="{{ $data }}">
-
-
-            <br>
-            <br>
-            <label for="transaction_type">Please select your transaction type and amount :</label>
-
-            <select id="transaction_type" name="transaction_type">
-                <option value="add">Add</option>
-                <option value="deduct">Deduct</option>
-            </select>
-
-
-            <input id="amount" type="number" step="any" class="form-control" name="amount" required autofocus placeholder="Add or deduct amount">
-
-<!--            <input type="submit" value="Submit">-->
-
-            <br>
-            <button type="submit" class="btn btn-primary" >Trade</button>
-
-        </form>
+        <a href="{{ url('dashboard-dark') }}">
+            <button class="btn btn-primary" >Dashboard</button>
+        </a>
 
     </div>
 </div>

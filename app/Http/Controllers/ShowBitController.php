@@ -19,11 +19,11 @@ class ShowBitController extends Controller
 
         $bit = new Bit();
 
-        $rate = $data->bpi->GBP->rate;
+        $rate = $data->bpi->USD->rate;
         $updateTimeUTC = $data->time->updated;
 
         $bit -> chartName = $data->chartName;
-        $bit -> currenciesName = $data->bpi->GBP->code;
+        $bit -> currenciesName = $data->bpi->USD->code;
         // Cause the float num is a string, so we need to grab the num only:
         $bit -> rate = (float)filter_var($rate, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         // The date has the string, we only want the int so we:
