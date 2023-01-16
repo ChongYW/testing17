@@ -30,15 +30,21 @@ class RefreshBitController extends Controller
         $bit -> updateTimeUTC = date('Y-m-d H:i:s', strtotime($updateTimeUTC));
         $bit -> save();
 
-        $updatedBit = 0.11857418 * (float)filter_var($rate, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
         $updateWallet = Wallet::findOrFail(auth()->id());
-//        $updateWallet->user_id = auth()->id();
-        $updateWallet->type = 'BTC';
+        $updatedBit = $updateWallet -> hold_shares * (float)filter_var($rate, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         $updateWallet->amount = $updatedBit;
+        $updateWallet->type = 'BTC';
         $updateWallet->save();
 
-        return view('dashboard-dark', ['updatedBit' => $updatedBit]);
+        $currentHold_shares = $updateWallet -> hold_shares;
+
+        $newestData = [
+            'updatedBit' => $updatedBit,
+            'currentHold_shares' => $currentHold_shares
+        ];
+
+        return view('dashboard-dark')->with($newestData);
 
     }
 }

@@ -96,7 +96,8 @@ class RegisterController extends Controller
 
             'user_id' => $user->id,
             'type' => 'BTC',
-            'amount' => 0.11857418 * (float)filter_var($rate, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+            'hold_shares' => 0,
+            'amount' => 0 * (float)filter_var($rate, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
 
         ]);
 
